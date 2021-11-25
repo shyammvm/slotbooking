@@ -1,0 +1,35 @@
+<%= form_with model: user do |form| %>
+    <div>
+      <%= form.label :email %><br>
+      <%= form.text_field :email %>
+      
+    </div><br>
+  
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %><br>
+     
+    </div><br>
+
+    <div>
+      <%= form.label :phone %><br>
+      <%= form.text_field :phone %><br>
+     
+    </div>
+
+    <p>
+    <%= form.label :designation %><br>
+    <%= form.select :designation, ['student', 'staff'], selected: 'student' %>
+  </p>
+  
+  <div>
+      <%= form.label :password %><br>
+      <%= form.text_field :pass_w %><br>
+     
+  </div><br>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
