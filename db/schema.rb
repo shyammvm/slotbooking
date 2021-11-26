@@ -10,16 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_21_060843) do
+ActiveRecord::Schema.define(version: 2021_11_26_141950) do
 
   create_table "users", force: :cascade do |t|
     t.string "email"
-    t.string "pass_w"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.string "designation"
-    t.string "phone"
   end
 
 end
