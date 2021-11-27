@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post 'sign_in', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   resources :users
+  resources :venues
   # get "/users", to: "users#index"
   # get "/articles", to: "articles#index"
 end
