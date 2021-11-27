@@ -1,12 +1,7 @@
-class ApplicationController < ActionController::Base
-    before_action :set_current_user, except: [:new, :create]
+# frozen_string_literal: true
 
-     def set_current_user 
-        if session[:user_id]
-            Current.user = User.find(session[:user_id])
-        else 
-            session[:user_id] = nil
-            redirect_to root_path, notice: "logged out"
-        end
-    end
+class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+  include Authenticable
+  before_action :set_current_user
 end

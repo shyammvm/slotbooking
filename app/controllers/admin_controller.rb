@@ -1,6 +1,5 @@
-class AdminController.rb < ApplicationController
-    before_action :set_current_user, except: [:new, :create]
-    def index 
+# frozen_string_literal: true
 
-    end
+class AdminController < ApplicationController
+  def index; end
 end
