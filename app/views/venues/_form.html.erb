@@ -1,0 +1,19 @@
+
+<%= form_with model: venue do |form| %>
+    <div>
+      <%= form.label :Venue %><br>
+      <%= form.text_field :title %>
+    </div>
+
+    <div>
+      <%= form.label :Description %><br>
+      <%= form.text_field :body %>
+    </div>
+
+    <br><br>
+    <div>
+      <%= form.submit %>
+    </div>
+
+
+    <% end %>
