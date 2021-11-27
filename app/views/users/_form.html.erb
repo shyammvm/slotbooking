@@ -1,35 +1,48 @@
-<%= form_with model: user do |form| %>
-    <div>
+<%= form_with model: @user do |form| %>
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <% @user.errors.full_messages.each do |message| %>
+          <div><%= message %></div>
+        <%end%>
+      </div>
+    <% end %>
+
+    <div class="mb3">
       <%= form.label :email %><br>
-      <%= form.text_field :email %>
+      <%= form.text_field :email, class: "form-control" %>
       
     </div><br>
   
-    <div>
+    <div class="mb3">
       <%= form.label :name %><br>
-      <%= form.text_field :name %><br>
+      <%= form.text_field :name, class: "form-control" %><br>
      
     </div><br>
 
-    <div>
+    <div class="mb3">
       <%= form.label :phone %><br>
-      <%= form.text_field :phone %><br>
+      <%= form.text_field :phone, class: "form-control" %><br>
      
     </div>
 
     <p>
     <%= form.label :designation %><br>
-    <%= form.select :designation, ['student', 'staff'], selected: 'student' %>
-  </p>
-  
-  <div>
-      <%= form.label :password %><br>
-      <%= form.text_field :pass_w %><br>
-     
-  </div><br>
+    <%= form.select :designation, ['student', 'staff'], selected: 'student', class: "form-control" %>
+    </p>
 
-    <div>
-      <%= form.submit %>
+    <p>
+    <%= form.label :role %><br>
+    <%= form.select :role, ['user', 'admin'], selected: 'user', class: "form-control" %>
+    </p>
+  
+    <div class="mb3">
+      <%= form.label :password %><br>
+      <%= form.text_field :password_digest, class: "form-control" %><br>
+     
+    </div><br>
+
+    <div class="mb3">
+      <%= form.submit "Create New User", class: "btn btn-primary" %>
     </div>
   <% end %>
   
