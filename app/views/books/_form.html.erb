@@ -1,0 +1,58 @@
+<%= form_with model: book do |form| %>
+   
+  <div>
+  <%= form.label :date %><br>
+  <%= form.date_select :date %>
+  </div><br>
+
+  <div>
+  <%= form.label :start_time %><br>
+  <%= form.time_select :start_time %>
+  </div><br>
+
+  <div>
+  <%= form.label :end_time %><br>
+  <%= form.time_select :end_time %>
+  </div><br>
+
+ 
+<div>
+<%= form.label :venue %><br>
+<%= form.collection_select(:venue_id, @venues, :id, :name, :include_blank => "Select venue") %>
+</div><br>
+   
+<table>
+
+  <thead>
+    <tr>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>Venue</th>
+      <th>Booked By</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @books.each do |b| %>
+    <tr>
+      <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
+      <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
+      <td><%= b.venue.name %></td>
+      <td><%= b.user.name %></td>
+    </tr>
+    <% end %>
+   </tbody> 
+</table>
+
+
+  
+  
+  
+  
+
+
+<div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
