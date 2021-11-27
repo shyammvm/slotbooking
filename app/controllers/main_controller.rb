@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-    
+    # skip_before_action :set_current_user, only: [ :index]
     def index 
         
         # session[:user_id] = nil
@@ -14,6 +14,12 @@ class MainController < ApplicationController
             render 'sessions/new'
         end
     end
+
+    # def nouser
+    #     if !Current.user
+    #         render 
+    #     end
+    # end
     # def sign_in
     #     # submit form and do your stuff here
     #     # and if your form submission was successful you would do something like this:    

@@ -1,27 +1,23 @@
 class SessionsController < ApplicationController
-
-    def new 
-
+    def new
     end
-
-    def create 
-        user = User.find_by(email: params[:email]) 
-        if user.present? 
-            session[:user_id] = user.id
-            redirect_to root_path, notice: "logged in sucessfully"
+    
+    def create
+        byebug
+        user = User.find_by(email: params[:email].downcase)
+        if user&.authenticate(params[:password_digest])
+          session[:user_id] = user.id
+          render status: :ok,
+                 json: { status: :created, logged_in: true, user: user,
+                         notice: "Logged in!" }
         else
-            flash[:alert] = "Invalid email or password"
-            render :new
+          render status: :unauthorized, json: { notice: "Incorrect credentials" }
         end
     end
 
+    
 
-    def destroy 
-        session[:user_id] = nil
-        redirect_to sign_in_path, notice: "logged out"
-    end
-     
+    # def session_params
+    #     params.permit(:email, :password_digest)
+    # end
 end
-
-
-# && user.authenticate(params[:password])
