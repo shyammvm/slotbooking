@@ -1,3 +1,3 @@
 class Venue < ApplicationRecord
-    mount_uploader :image, VenueImageUploader
+    has_one_attached :images
 end
