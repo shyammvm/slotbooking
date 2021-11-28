@@ -17,14 +17,33 @@ class BooksController < ApplicationController
         @venues=Venue.all
         @books=Book.all
         @book = Book.new(book_params)
-      
-        if @book.save
-          redirect_to root_path
-        else
+        if bookingcheck
+          if @book.save
+            redirect_to root_path
+          else
+            render :new
+          end
+        else 
           render :new
         end
+
       end
     
+      def bookingcheck
+        Book.all.each do |b|
+          
+          if b.date == params[:date]
+            byebug
+           if b.start_time >= params[:end_time] or b.end_time <= params[:start_time]
+            return true
+           else 
+            return false
+           end
+          else 
+            return true
+          end 
+        end
+      end
 
     private
     def book_params
