@@ -1,28 +1,30 @@
 <div class="d-flex align_items-center justify-content-center">
     <h1>User Home Page</h1>
 </div>
-<table>
+
+
+<table class="table">
 
   <thead>
     <tr>
-        <th>Date</th>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th>Venue</th>
-      <th>Booked By</th>
+      <th scope = "col">Venue</th>
+      <th scope = "col">Booked by</th>
+      <th scope = "col">From</th>
+      <th scope = "col">To</th>
     </tr>
   </thead>
 
   <tbody>
   <% Book.all.each do |b| %>
     <tr>
-        <td><%= b.try(:date) %></td>
-      <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
-      <td><%= b.try(:end_time).try(:strftime, ("%H:%M"))%></td>
-      <td><%= b.venue.title %></td>
+        <th scope = "row"><%= b.venue.title %></th>
       <td><%= b.user.name %></td>
+      <td><%= b.try(:start_time).try(:strftime, ("%m/%d/%Y, %H:%M"))%></td>
+      <td><%= b.try(:end_time).try(:strftime, ("%m/%d/%Y, %H:%M"))%></td>
     </tr>
     <% end %>
    </tbody> 
 </table>
+
+
 <%= link_to "Booking Page","/books/new" %>
