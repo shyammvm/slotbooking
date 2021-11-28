@@ -37,7 +37,7 @@
     <tr>
       <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
       <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
-      <td><%= b.venue.name %></td>
+      <td><%= b.venue.title %></td>
       <td><%= b.user.name %></td>
     </tr>
     <% end %>
