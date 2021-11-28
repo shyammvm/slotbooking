@@ -5,6 +5,7 @@
 
   <thead>
     <tr>
+        <th>Date</th>
       <th>Start Time</th>
       <th>End Time</th>
       <th>Venue</th>
@@ -15,9 +16,10 @@
   <tbody>
   <% Book.all.each do |b| %>
     <tr>
+        <td><%= b.try(:date) %></td>
       <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
-      <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
-      <td><%= b.venue.name %></td>
+      <td><%= b.try(:end_time).try(:strftime, ("%H:%M"))%></td>
+      <td><%= b.venue.title %></td>
       <td><%= b.user.name %></td>
     </tr>
     <% end %>

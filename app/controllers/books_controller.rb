@@ -17,7 +17,7 @@ class BooksController < ApplicationController
         @venues=Venue.all
         @books=Book.all
         @book = Book.new(book_params)
-    
+      
         if @book.save
           redirect_to root_path
         else
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
 
     private
     def book_params
-        params.require(:book).permit(:date,:start_time,:end_time,:venue_id).merge(user_id:5)
+        params.require(:book).permit(:date,:start_time,:end_time,:venue_id).merge(user_id:@current_user.id)
     end
 
 end
