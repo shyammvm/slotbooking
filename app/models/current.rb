@@ -2,4 +2,5 @@
 
 class Current < ActiveSupport::CurrentAttributes
   attribute :user
+  has_many :books
 end

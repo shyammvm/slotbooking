@@ -36,7 +36,7 @@ gem "devise"
 #gem 'carrierwave'
 gem 'carrierwave-google-storage'
 gem 'mini_magick'
-gem 'fog'
+#gem 'fog'
 gem 'figaro'
 gem 'unf'
 

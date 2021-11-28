@@ -1,0 +1,19 @@
+<h1>booking open now</h1>
+
+<% if false %>
+<% @books.each do |book| %>
+    <%= book.date %><br>
+    <%= book.user.name %><br>
+    <%= book.venue.name %><br>
+<% end %>
+<% end %>
+
+<% @users.each do |user| %>
+    <%= user.name %><br>
+    <%= user.books.date %><br>
+<% end %>
+
+
+  
+      
+
