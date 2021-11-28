@@ -25,7 +25,7 @@ class BooksController < ApplicationController
 
     private
     def book_params
-        params.require(:book).permit(:date,:start_time,:end_time,:venue_id).merge(user_id:17)
+        params.require(:book).permit(:date,:start_time,:end_time,:venue_id).merge(user_id:5)
     end
 
 end
