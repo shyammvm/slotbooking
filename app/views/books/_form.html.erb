@@ -18,39 +18,10 @@
  
 <div class="mb3">
 <%= form.label :venue %><br>
-<%= form.collection_select(:venue_id, @venues, :id, :title, :include_blank => "Select venue") %>
+<%= form.collection_select(:venue_id, @venues, :id, :title) %>
 </div><br>
    
-<table>
-
-  <thead>
-    <tr>
-      <th>Start Time</th>
-      <th>End Time</th>
-      <th>Venue</th>
-      <th>Booked By</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <% @books.each do |b| %>
-    <tr>
-      <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
-      <td><%= b.try(:start_time).try(:strftime, ("%H:%M"))%></td>
-      <td><%= b.venue.name %></td>
-      <td><%= b.user.name %></td>
-    </tr>
-    <% end %>
-   </tbody> 
-</table>
-
-
-  
-  
-  
-  
-
-
+   
 <div>
       <%= form.submit %>
     </div>

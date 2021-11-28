@@ -2,6 +2,7 @@ class BooksController < ApplicationController
     def index
         @books=Book.all
         @users=User.all
+        @venues=Venue.all 
         
     end
 
@@ -13,6 +14,8 @@ class BooksController < ApplicationController
       end
     
       def create
+        @venues=Venue.all
+        @books=Book.all
         @book = Book.new(book_params)
     
         if @book.save
