@@ -1,9 +1,10 @@
 class BooksController < ApplicationController
+  before_action :load_venue, only: [:create]
+
     def index
-        @books=Book.all
-        @users=User.all
-        @venues=Venue.all 
-        
+        @books = Book.all
+        @users = User.all
+        @venues = Venue.all 
     end
 
  
@@ -30,25 +31,23 @@ class BooksController < ApplicationController
       end
     
       def bookingcheck
-        Book.all.each do |b|
-          
-          if b.date == params[:date]
-            byebug
-           if b.start_time >= params[:end_time] or b.end_time <= params[:start_time]
-            return true
-           else 
+        current_start_time = book_params[:start_time]
+        current_end_time = book_params[:end_time]
+        @venue.books.each do |b|
+          if current_start_time <= b.end_time && b.start_time <= current_end_time
             return false
-           end
-          else 
-            return true
-          end 
+          end
         end
       end
 
     private
-    def book_params
-        params.require(:book).permit(:date,:start_time,:end_time,:venue_id).merge(user_id:@current_user.id)
-    end
 
+    def book_params
+      params.require(:book).permit(:date,:start_time,:end_time,:venue_id).merge(user_id:@current_user.id)
+    end
+    
+    def load_venue
+      @venue = Venue.find_by(id: book_params[:venue_id])
+    end
 end
 
