@@ -1,22 +1,22 @@
 <%= form_with model: book do |form| %>
    
-  <div>
+  <div class="mb3">
   <%= form.label :date %><br>
   <%= form.date_select :date %>
   </div><br>
 
-  <div>
+  <div class="mb3">
   <%= form.label :start_time %><br>
   <%= form.time_select :start_time %>
   </div><br>
 
-  <div>
+  <div class="mb3">
   <%= form.label :end_time %><br>
   <%= form.time_select :end_time %>
   </div><br>
 
  
-<div>
+<div class="mb3">
 <%= form.label :venue %><br>
 <%= form.collection_select(:venue_id, @venues, :id, :name, :include_blank => "Select venue") %>
 </div><br>
