@@ -10,6 +10,15 @@
       <%= form.text_field :body %>
     </div>
 
+    <div class="form-group">
+      <% if @venue.images.attached? %>
+      <%= image_tag @venue.images, style: "width: 200px; display: block" %>
+      <% end %>
+
+      <%= form.label :images %><br>
+      <%= form.file_field :images, class: "form-control" %><br>
+    </div>
+    
     <br><br>
     <div>
       <%= form.submit %>

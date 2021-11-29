@@ -17,6 +17,7 @@ class VenuesController < ApplicationController
 
     def create
         @venue = Venue.new(form_params)
+        @venue.images.attach(params[:venue][:images])
         @venue.save
         redirect_to root_path
     end
