@@ -18,7 +18,7 @@ class VenuesController < ApplicationController
         @venue = Venue.new(form_params)
         @venue.images.attach(params[:venue][:images])
         if @venue.save
-          redirect_to root_path
+          redirect_to venues_path
         else 
           flash[:notice] = 'Please try again'
           redirect_to new_venue_path

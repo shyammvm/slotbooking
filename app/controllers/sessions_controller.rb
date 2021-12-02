@@ -16,7 +16,6 @@ class SessionsController < ApplicationController
 
   def destroy
     reset_session
-    # render json: { logged_in: false }
     @current_user = nil
     render 'logout/index'
   end
