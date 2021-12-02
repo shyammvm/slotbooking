@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      render status: :unauthorized, json: { notice: 'Incorrect credentials' }
+      flash[:notice] = 'incorrect email or password'
+      redirect_to sign_in_path notice
     end
   end
 

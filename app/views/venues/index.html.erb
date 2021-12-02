@@ -1,11 +1,19 @@
-<h1>Venues</h1>
+<div class="d-flex align_items-center justify-content-center">
+<h1>Venues</h1></div>
+<div class="d-flex align_items-center justify-content-center">
+<br>
 
-<section>
-    <% @venue.each do |venue| %>
-        <p><%= link_to venue.title, venue_path(venue) %></p>
-    <% end %>    
-</section>
+<ol class="list-group list-group-numbered">
+  <% @venue.each do |venue| %>
 
-<p>
-    <%= link_to "Add Venue" , new_venue_path %>
-</p>
+    <li class="list-group-item">
+      <%= link_to venue.title, venue %>
+    </li>
+  <% end %>
+</ul>
+<br>
+<br>
+</div>
+<div class="d-flex align_items-center justify-content-center">
+<%= button_to "Add a venue", new_venue_path, method: :get, class: "btn btn-primary"%>
+</div>

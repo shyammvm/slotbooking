@@ -14,31 +14,40 @@ class BooksController < ApplicationController
         @venues=Venue.all
       end
     
-      def create
-        @venues=Venue.all
-        @books=Book.all
-        @book = Book.new(book_params)
-        if bookingcheck
-          if @book.save
-            redirect_to root_path
-          else
-            render :new
-          end
-        else 
+    def create
+      @venues=Venue.all
+      @books=Book.all
+      @book = Book.new(book_params)
+      if bookingcheck
+        if @book.save
+          redirect_to root_path
+        else
+          flash[:notice] = 'Please try again.'
           render :new
         end
-
+      else 
+        flash[:notice] = 'Booking already exists for the selected venue and time'
+        render :new
       end
+
+    end
     
-      def bookingcheck
-        current_start_time = book_params[:start_time]
-        current_end_time = book_params[:end_time]
-        @venue.books.each do |b|
-          if current_start_time <= b.end_time && b.start_time <= current_end_time
-            return false
-          end
+    def bookingcheck
+      current_start_time = book_params[:start_time]
+      current_end_time = book_params[:end_time]
+      @venue.books.each do |b|
+        if current_start_time <= b.end_time && b.start_time <= current_end_time
+          return false
         end
       end
+    end
+
+    def destroy
+        @book = Book.find(params[:id])
+        @book.destroy
+    
+        redirect_to books_path
+    end
 
     private
 

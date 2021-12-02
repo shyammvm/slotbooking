@@ -30,6 +30,9 @@ gem 'rubocop'
 # Authentication
 gem "devise"
 
+# Rails 5.2 and Rails 6
+gem 'active_storage_validations'
+
 #gem 'simple_form'
 # Reduces boot times through caching; required in config/boot.rb
 

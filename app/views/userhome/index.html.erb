@@ -1,8 +1,29 @@
 <div class="d-flex align_items-center justify-content-center">
     <h1>User Home Page</h1>
 </div>
+<h2>Venues:</h2>
+<table class="table">
 
+  <thead>
+    <tr>
+      <th scope = "col">Venue</th>
+      <th scope = "col">Description</th>
+      
+    </tr>
+  </thead>
 
+  <tbody>
+  <% Venue.all.each do |v| %>
+    <tr>
+        <th scope = "row"><div class="row"> <%= link_to v.title, venue_path(v) %></th>
+      <td> <div class="col-2 text-truncate"><%= v.body %></div></td>
+      
+    </tr>
+    <% end %>
+   </tbody> 
+</table>
+<br><br>
+<h2>Current Bookings:</h2>
 <table class="table">
 
   <thead>
@@ -25,6 +46,7 @@
     <% end %>
    </tbody> 
 </table>
-
-
-<%= link_to "Booking Page","/books/new" %>
+<br><br>
+<div class="d-flex align_items-center justify-content-center">
+    <%= button_to "New Booking", "/books/new", method: :get, class: "btn btn-primary"%>
+</div>
