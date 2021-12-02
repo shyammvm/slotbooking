@@ -19,10 +19,11 @@
     <% if @current_user %>
     <li class="nav-item">
       <span class="navbar-text"><%= @current_user.email %></span>
+      &nbsp
     </li>
     <li class="nav-item">
-      <%= button_to "logout", logout_path, method: :delete %>
-    </li>
+      
+  <%= button_to "logout", logout_path, method: :delete, class: "btn btn-primary" %>  </li>
     <%else%>
     <li class="nav-item">
       <%= link_to "login", sign_in_path%>

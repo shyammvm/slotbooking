@@ -1,21 +1,25 @@
-<h1> <%= @venue.title %> </h1>
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-auto">
+      <p> <%= image_tag @venue.images, style: "width: 200px; display: block" %> </p>
+    </div>
+    <div class="col">
+      <h1> <%= @venue.title %> </h1>
+      <p> <%= @venue.body %> </p>
+    </div>
+  </div>
+</div>
 
-<p> <%= @venue.body %> </p>
+<br><br>
+<% if @current_user.role == "admin" %>
+  <div class="hstack gap-3">
+    <div class="bg-light border"><%= button_to "Edit", edit_venue_path, method: :get, class: "btn btn-primary"%></div>
+    <div class="bg-light border"><%= button_to "Delete", venue_path(@venue), method: :delete,data: { confirm: "Are you sure?" } , class: "btn btn-primary"%></div>
+    <div class="bg-light border ms-auto"><%= button_to "Manage Venues", "/venues", method: :get, class: "btn btn-primary"%></div>
+  </div>
+<%else%>
 
-<p> <%= image_tag @venue.images, style: "width: 200px; display: block" %> </p>
+  <%= button_to "< Back", root_path, method: :get, class: "btn btn-primary"%>
 
-
-
-<ul>
-  <li><%= link_to "Edit", edit_venue_path(@venue) %></li>
-  <li><%= link_to "Destroy", venue_path(@venue),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-</ul>
-
-<%= link_to "Home Page", root_path %>
-
-
-
-
-
+<%end%>

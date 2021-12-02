@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to @user, notice: 'Sucessfullly created user'
     else
+      flash[:notice] = 'Please try again'
       render :new
     end
   end

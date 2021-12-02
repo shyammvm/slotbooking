@@ -9,13 +9,13 @@
 <p>Designation = <%= @user.designation %></p>
 <p>Role = <%= @user.role %></p>
 
-<%# <p>Password = <%= @user.password_digest %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_user_path(@user) %></li>
-  <li><%= link_to "Destroy", user_path(@user),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %></li>
-  <li><%= link_to "All User Page","/users" %></li>                
-</ul>
 
+<br>
+<br>
+
+<div class="hstack gap-3">
+  <div class="bg-light border"><%= button_to "Edit", edit_user_path, method: :get, class: "btn btn-primary"%></div>
+  <div class="bg-light border"><%= button_to "Delete", user_path(@user), method: :delete,data: { confirm: "Are you sure?" } , class: "btn btn-primary"%></div>
+  <div class="bg-light border ms-auto"><%= button_to "Manage users", "/users", method: :get, class: "btn btn-primary"%></div>
+</div>
